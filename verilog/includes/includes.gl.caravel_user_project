@@ -1,3 +1,23 @@
 # Caravel user project includes	     
--v $(USER_PROJECT_VERILOG)/gl/user_project_wrapper.v	     
--v $(USER_PROJECT_VERILOG)/gl/user_proj_example.v     
+-v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v	     
+-v $(USER_PROJECT_VERILOG)/rtl/user_proj_example.v
+-v $(USER_PROJECT_VERILOG)/rtl/c_elem.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_adder_linked.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_adder.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_counter_tb.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_counter.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_ed.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_fa_fl.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_fa_tb.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_fa.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_fib_tb.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_fib.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_latch.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_link.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_min.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_pipeline_tb.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_pipeline.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_sync.v
+-v $(USER_PROJECT_VERILOG)/rtl/el_t_mid.v
+-v $(USER_PROJECT_VERILOG)/rtl/rs_lat.v
+
