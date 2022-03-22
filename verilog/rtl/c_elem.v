@@ -12,7 +12,11 @@ module c_elem#(
 	output							out
 //------------------------------------
 );
+
 /*
+wire [IN_NUM-1 : 0] in_rst;
+assign in_rst = in & ({IN_NUM{!rst}});
+*/
 reg out_r = 0;
 
 assign out = out_r;
@@ -35,20 +39,7 @@ begin
 		end
 	end
 end
-*/
 
-reg phase = 0;
-wire click;
 
-wire [IN_NUM-1 : 0] in_rst;
-assign in_rst = in & {IN_NUM{!rst}};
-
-assign click = ((&in_rst) & !phase) | (&(~in_rst) & phase);
-assign out = phase;
-
-always@(posedge click)
-begin
-	phase <= !phase;
-end
 
 endmodule

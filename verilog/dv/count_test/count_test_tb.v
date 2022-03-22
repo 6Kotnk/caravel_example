@@ -26,12 +26,12 @@ module io_ports_tb;
 
 	wire gpio;
 	wire [37:0] mprj_io;
-	wire [7:0] mprj_io_0;
+	wire [15:0] mprj_io_0;
 
-	assign mprj_io_0 = mprj_io[7:0];
+	assign mprj_io_0 = mprj_io[23:8];
 	// assign mprj_io_0 = {mprj_io[8:4],mprj_io[2:0]};
 
-	assign mprj_io[3] = (CSB == 1'b1) ? 1'b1 : 1'bz;
+	 assign mprj_io[3] = (CSB == 1'b1) ? 1'b1 : 1'bz;
 	// assign mprj_io[3] = 1'b1;
 
 	// External clock is used by default.  Make this artificially fast for the
@@ -50,7 +50,7 @@ module io_ports_tb;
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
 		repeat (25) begin
-			repeat (5000) @(posedge clock);
+			repeat (3000) @(posedge clock);
 			// $display("+1000 cycles");
 		end
 		$display("%c[1;31m",27);
@@ -65,9 +65,9 @@ module io_ports_tb;
 
 	initial begin
 	    // Observe Output pins [7:0]
-		wait(mprj_io_0 == 8'd005);
-		wait(mprj_io_0 == 8'd055);
-		wait(mprj_io_0 == 8'd144);
+		wait(mprj_io_0 == 16'd005);
+		wait(mprj_io_0 == 16'd055);
+		wait(mprj_io_0 == 16'd144);
 		`ifdef GL
 	    	$display("Monitor: Test 1 Mega-Project IO (GL) Passed");
 		`else
@@ -100,8 +100,8 @@ module io_ports_tb;
 		power4 <= 1'b1;
 	end
 
-	always @(mprj_io) begin
-		#1 $display("MPRJ-IO state = %b ", mprj_io[7:0]);
+	always @(mprj_io_0) begin
+		#1 $display("MPRJ-IO state = %b ", mprj_io_0);
 	end
 
 	wire flash_csb;

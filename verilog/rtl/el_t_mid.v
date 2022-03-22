@@ -17,7 +17,7 @@ reg [SUM_W - 1:0] sum = 0;
 reg out_r = 0;
 assign out = out_r;
 
-integer in_idx;
+integer in_idx = 0;
 
 always@(*)
 begin

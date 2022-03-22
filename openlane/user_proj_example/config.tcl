@@ -36,18 +36,50 @@ set ::env(VERILOG_FILES) "\
 	$script_dir/../../verilog/rtl/el_t_mid.v"
 
 set ::env(DESIGN_IS_CORE) 0
+set ::env(FP_PDN_IRDROP) 0
+set ::env(STA_REPORT_POWER) 0
 
-set ::env(CLOCK_PORT) "wb_clk_i"
-set ::env(CLOCK_NET) "wb_clk_i"
-set ::env(CLOCK_PERIOD) "10"
+set ::env(CLOCK_PORT) ""
+set ::env(CLOCK_NET) ""
+set ::env(CLOCK_PERIOD) "1000"
 
 set ::env(FP_SIZING) absolute
 set ::env(DIE_AREA) "0 0 900 600"
 
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 
-set ::env(PL_BASIC_PLACEMENT) 1
-set ::env(PL_TARGET_DENSITY) 0.05
+set ::env(PL_BASIC_PLACEMENT) 0
+set ::env(PL_TARGET_DENSITY) 0.42
+set ::env(FP_CORE_UTIL) 42
+set ::env(SYNTH_STRATEGY) "DELAY 1"
+set ::env(CELL_PAD) {4} 
+# 5 Earlier
+# Vorher: 50 0.45
+# Vorher: 30 0.2
+
+# More ERT effort
+#set ::env(DRT_OPT_ITERS) 99
+
+
+# Taken from elsewhere: https://github.com/dineshannayya/riscduino/blob/master/openlane/yifive/config.tcl
+set ::env(PL_TIME_DRIVEN) 0
+# set ::env(PL_TARGET_DENSITY) "0.1"
+# set ::env(FP_CORE_UTIL) "37"
+# set ::env(GLB_RT_MAX_DIODE_INS_ITERS) 10
+# set ::env(DIODE_INSERTION_STRATEGY) 4
+
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.5
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.5
+
+# Taken from: https://github.com/The-OpenROAD-Project/OpenLane/issues/948
+set ::env(CELL_PAD_EXCLUDE) {sky130_fd_sc_hd__tap* sky130_fd_sc_hd__decap* sky130_fd_sc_hd__fill* sky130_fd_sc_hd__diode*}
+
+# Taken from: https://github.com/The-OpenROAD-Project/OpenLane/issues/948
+# set ::env(GLB_RT_ALLOW_CONGESTION) 1
+# set ::env(DRT_OPT_ITERS) 2048
+
+# Alternative DIODE INSERTION STRATAEGY - 3 is OpenLane's.
+# set ::env(DIODE_INSERTION_STRATEGY) 1
 
 # Maximum layer used for routing is metal 4.
 # This is because this macro will be inserted in a top level (user_project_wrapper) 
@@ -62,6 +94,8 @@ set ::env(RT_MAX_LAYER) {met4}
 set ::env(VDD_NETS) [list {vccd1}]
 set ::env(GND_NETS) [list {vssd1}]
 
-set ::env(DIODE_INSERTION_STRATEGY) 4 
+set ::env(DIODE_INSERTION_STRATEGY) 4
+set ::env(GLB_RT_MAX_DIODE_INS_ITERS) 5
+# Diode insertion strategy was: 4
 # If you're going to use multiple power domains, then disable cvc run.
 set ::env(RUN_CVC) 1

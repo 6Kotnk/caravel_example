@@ -37,7 +37,7 @@
 
 
 module user_proj_example #(
-	parameter BITS = 32
+	parameter BITS = 16
 )(
 `ifdef USE_POWER_PINS
 	inout vccd1,	// User area 1 1.8V supply
@@ -74,9 +74,9 @@ module user_proj_example #(
 
 
 	// IO
-	assign io_out = {{(`MPRJ_IO_PADS-1-BITS){1'b0}},count};
+	assign io_out = {{(`MPRJ_IO_PADS-1-16-8-1){1'b0}},ack_o, count[15:0], 8'b0};
 	//assign io_out = {(`MPRJ_IO_PADS-1){1'b0}};
-	assign io_oeb = {(`MPRJ_IO_PADS-1){1'b0}};
+	assign io_oeb = {(`MPRJ_IO_PADS-1){wb_rst_i}};
 
 	wire [`MPRJ_IO_PADS-1:0] io_in;
 	wire [`MPRJ_IO_PADS-1:0] io_out;
@@ -105,8 +105,12 @@ module user_proj_example #(
 	//assign out = 0;
 		
 	//assign la_data_out = 0;
-	assign start = la_data_in[124];
-	assign ack_i = la_data_in[125];
+	
+	wire mux_en;
+	
+	assign start = (la_oenb[124] == 1) ? 0 : la_data_in[124];
+	assign ack_i = (la_oenb[125] == 1) ? 0 : la_data_in[125];
+	assign mux_en = (la_oenb[126] == 1) ? 0 : la_data_in[126];
 
 	//assign start = 0;
 	//assign ack_i = 0;
@@ -137,8 +141,28 @@ module user_proj_example #(
 		end
 	endgenerate 
 
+	reg ack_mux_r;
 	
-
+	always@(posedge wb_clk_i)
+	begin
+		if(wb_rst_i)
+		begin
+			ack_mux_r <= 0;
+		end
+		else
+		begin
+			if(mux_en)
+			begin
+				ack_mux_r <= ack_o;
+			end
+			else
+			begin
+				ack_mux_r <= ack_i;
+			end
+		end
+	end
+	
+	
 	
 	el_fib#
 	(
@@ -149,7 +173,7 @@ module user_proj_example #(
 	    .rst(wb_rst_i),
 	    .start(start),
 	    
-	    .ack_i(ack_i),
+	    .ack_i(ack_mux_r),
 	    .ack_o(ack_o),
 	    .out(out)
 	    

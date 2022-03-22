@@ -58,6 +58,7 @@ void main()
 	// logic analyzer probes.
 	// I/O 6 is configured for the UART Tx line
 
+
 	reg_mprj_io_0 =  GPIO_MODE_USER_STD_OUTPUT;
 	reg_mprj_io_1 =  GPIO_MODE_USER_STD_OUTPUT;
 	reg_mprj_io_2 =  GPIO_MODE_USER_STD_OUTPUT;
@@ -67,6 +68,23 @@ void main()
 	reg_mprj_io_6 =  GPIO_MODE_USER_STD_OUTPUT;
 	reg_mprj_io_7 =  GPIO_MODE_USER_STD_OUTPUT;
 
+
+	reg_mprj_io_8  =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_9  =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_10 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_11 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_12 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_13 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_14 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_15 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_16 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_17 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_18 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_19 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_20 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_21 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_22 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_23 =  GPIO_MODE_USER_STD_OUTPUT;
 
     // Now, apply the configuration
     reg_mprj_xfer = 1;
@@ -101,8 +119,6 @@ void main()
 			
 	
 	}
-	print("\n");
-	print("Monitor: Test 1 Passed\n\n");	// Makes simulation very long!
 
 
 }

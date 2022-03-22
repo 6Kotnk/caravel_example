@@ -89,7 +89,7 @@ assign in_c[1] = 0;
 
 assign ack_c = ^out_c;
 
-assign ack_o = ack_b;
+assign ack_o = ack_c_o;
 
 
 
@@ -184,7 +184,7 @@ c_join_mem2
 (
 	.rst(rst),
 	
-	.in({ack_b,ack_i}),
+	.in({ack_c_o,ack_i}),
 	.out(mem_2_ack_i)
 );
 
