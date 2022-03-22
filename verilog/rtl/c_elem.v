@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module c_elem#(
+(* keep_hierarchy = "yes" *) module c_elem#(
 	parameter						IN_NUM = 2
 )
 (
@@ -17,7 +17,7 @@ module c_elem#(
 wire [IN_NUM-1 : 0] in_rst;
 assign in_rst = in & ({IN_NUM{!rst}});
 */
-reg out_r = 0;
+(* keep = "true" *) reg out_r = 0;
 
 assign out = out_r;
 

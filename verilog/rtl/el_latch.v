@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module el_latch#(
+(* keep_hierarchy = "yes" *)module el_latch#(
 	parameter						RAIL_NUM = 2
 )
 (

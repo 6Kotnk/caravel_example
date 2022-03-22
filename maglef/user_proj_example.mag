@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1647903636
+timestamp 1647922587
 << obsli1 >>
 rect 1104 2159 178848 117521
 << obsm1 >>
@@ -1239,11 +1239,9 @@ rect 142448 2128 142768 117552
 rect 157808 2128 158128 117552
 rect 173168 2128 173488 117552
 << obsm4 >>
-rect 14963 8195 19488 39405
-rect 19968 8195 34848 39405
-rect 35328 8195 50208 39405
-rect 50688 8195 65568 39405
-rect 66048 8195 71885 39405
+rect 44035 14315 50208 28389
+rect 50688 14315 65568 28389
+rect 66048 14315 69493 28389
 << labels >>
 rlabel metal2 s 754 119200 810 120000 6 io_in[0]
 port 1 nsew signal input
@@ -2487,8 +2485,8 @@ port 609 nsew signal input
 string FIXED_BBOX 0 0 180000 120000
 string LEFclass BLOCK
 string LEFview TRUE
-string GDS_END 14126584
+string GDS_END 14574368
 string GDS_FILE /home/hexkotnk/caravel_tutorial/caravel_example/openlane/user_proj_example/runs/user_proj_example/results/finishing/user_proj_example.magic.gds
-string GDS_START 964570
+string GDS_START 920706
 << end >>
 

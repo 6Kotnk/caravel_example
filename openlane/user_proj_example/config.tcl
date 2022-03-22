@@ -41,7 +41,7 @@ set ::env(STA_REPORT_POWER) 0
 
 set ::env(CLOCK_PORT) ""
 set ::env(CLOCK_NET) ""
-set ::env(CLOCK_PERIOD) "1000"
+set ::env(CLOCK_PERIOD) "100000"
 
 set ::env(FP_SIZING) absolute
 set ::env(DIE_AREA) "0 0 900 600"
